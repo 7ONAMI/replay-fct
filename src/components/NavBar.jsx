@@ -1,16 +1,17 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { FaSearch } from "react-icons/fa";
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link,useNavigate,useSearchParams } from 'react-router-dom';
 
 
 export const NavBar = () => {
 
   const [query, setQuery] = useSearchParams();
   const search = query.get("search");
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate("/listado",{state: {query}})
   }
 
 

@@ -12,6 +12,7 @@ export const ListItems = ({title, top}) => {
     // cambiar tipo
     function handleIsMovie() {
         setIsMovie(!isMovie);
+        
     }    
     useEffect(() => {
 
@@ -46,7 +47,7 @@ export const ListItems = ({title, top}) => {
             <div className="list">
             <ul>
                 {movies.map((movie) =>(
-                    <MovieCard key={movie.id} movie={movie}/>
+                    <MovieCard key={movie.id} movie={movie} isMovie={isMovie}/>
                 ) 
                 )}
             </ul>
