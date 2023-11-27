@@ -8,6 +8,7 @@ export const ListType = ({title, top, type}) => {
     
     // tipo de audiovisual ( pelicula o serie)
     let [movies, setMovies] = useState([])
+    let [isMovie, setIsMovie] = useState (true);
     // cambiar tipo
      
     useEffect(() => {
@@ -17,6 +18,7 @@ export const ListType = ({title, top, type}) => {
             get("movie/"+top+"?language=es-Es&page=1")
             .then((data)=> setMovies(data.results)) 
             // console.log(movies)  
+            setIsMovie(true);
         }
         else if (type== "tv") {
             
@@ -27,7 +29,7 @@ export const ListType = ({title, top, type}) => {
              get("tv/"+top+"?language=es-Es&page=1")
             .then((data)=> setMovies(data.results))   
             }
-                
+            setIsMovie(false);   
         }
       
     }, [type, top])
@@ -39,7 +41,7 @@ export const ListType = ({title, top, type}) => {
             
             <ul>
                 {movies.map((movie) =>(
-                    <MovieCard key={movie.id} movie={movie}/>
+                    <MovieCard key={movie.id} movie={movie} isMovie={isMovie}/>
                 ) 
                 )}
             </ul>
