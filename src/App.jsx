@@ -6,7 +6,6 @@ import { Home } from './pages/Home';
 import { Movies } from './pages/Movies';
 import { Tv } from './pages/Tv';
 import { Details } from './pages/Details';
-import { Search } from './pages/Search';
 import { NavBar } from './components/NavBar';
  function App() {
  
@@ -18,7 +17,6 @@ import { NavBar } from './components/NavBar';
         <Route path='/peliculas'  Component={Movies}/>
         <Route path='/series'  Component={Tv}/>  
         <Route path='/detalles/:type/:movieId'  Component={Details} />
-        <Route path='listado/:search' Component={Search}/>
         <Route path='*' Component={<Navigate replace to="/" />} />
     </Routes>
     </>

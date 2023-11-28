@@ -16,27 +16,31 @@ export const NavBar = () => {
 
 
   return (
-    <header>
-        {/* imagen de logo */}
-        <img src="/images/replay.png" alt="replay.com" />
-        {/* barra de busqueda */}
-        <form onSubmit={handleSubmit}>
-          <div>
-            <input 
-              type="text"
-              value={search ?? ""} 
-              placeholder='Titulo...'
-              onChange={ (e) => {
-                const value= e.target.value;
-                setQuery({search: value});
-              }}/>
-            <FaSearch />
-          </div>
-        </form> 
-        {/* barra de navegación */}
-        <nav>
-          <Link to="/peliculas">Peliculas</Link>
-          <Link to="/series">Series</Link>
+    <header className=' bg-slate-800 flex place-content-between max-h-20 text-white'>
+                 {/* imagen de logo */}
+        <Link className='p-3 flex items-center text-white ' to={"/"}><img className='max-h-12 pr-3' src="/images/replay.png" alt="logo" /><h2>Replay</h2>
+        </Link>
+               
+        <nav className='list-none  hidden sm:flex text-[18px] sm:w-[438px] sm:place-content-around sm:items-center'>
+
+          <li><Link to="/peliculas">Peliculas</Link></li> 
+          <li><Link to="/series">Series</Link></li>
+          
+
+          <form className='flex sm:items-center ' onSubmit={handleSubmit}>
+              <input 
+                className='w-full rounded-lg bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                type="text"
+                value={search ?? ""} 
+                placeholder='  Titulo...'
+                onChange={ (e) => {
+                  const value= e.target.value;
+                  setQuery({search: value});
+                }}/>
+              <FaSearch  color="secondary"  className='pl-1'/>
+          </form> 
+             
+          
         </nav>
     </header>
   )

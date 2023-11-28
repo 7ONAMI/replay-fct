@@ -4,7 +4,6 @@ import styles from "./Details.module.css";
 import { useParams } from "react-router";
 import { get } from "../utils/httpGet";
 import { useEffect, useState } from "react";
-import {NavBar} from "../components/NavBar"
 export const Details = () => {
     const {movieId, type} = useParams();
     const [movie, setMovie] = useState(null);
@@ -40,7 +39,6 @@ export const Details = () => {
     
   if (type =="movie") { return (
     <>
-    <NavBar/>
     <div className={styles.detailsContainer}>
         <img className={`${styles.col} ${styles.movieImage}`} src={imagenUrl} alt={movie.title} />
         <div className={`${styles.col} ${styles.movieDetails}`}>
@@ -75,7 +73,6 @@ export const Details = () => {
     </>
   ) } else{ return (
     <>
-    <NavBar/>
     <div className={styles.detailsContainer}>
         <img className={`${styles.col} ${styles.movieImage}`} src={imagenUrl} alt={movie.title} />
         <div className={`${styles.col} ${styles.movieDetails}`}>
@@ -98,7 +95,6 @@ export const Details = () => {
             }      
             <div className="creator">Creador {movie.created_by.map(creator=> creator.name).join(", ")}</div>
         </div>
-
     </div>
     </>
   )}

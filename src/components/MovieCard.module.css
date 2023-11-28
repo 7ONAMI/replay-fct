@@ -1,7 +1,10 @@
 .movieCard{
     list-style: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .movieCard:hover{
     opacity: 0.8;

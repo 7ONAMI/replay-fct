@@ -17,11 +17,11 @@ export const Home= () => {
       <MoviesGrid key={debouncedSearch} search={debouncedSearch} />
     </div>)
   } else  { return (
-    <>
+    <div className='inline'>
     <Banner/>
-    <ListItems title="Popular" top="popular"/>
+    <ListItems  title="Popular" top="popular"/>
     <ListItems title="Estrenos" top="upcoming"/>
-</>)  
+</div>)  
   
   }
    
