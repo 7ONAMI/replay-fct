@@ -28,15 +28,15 @@ export const MoviesGrid = ({search}) => {
   }
   
   return (
-    <div className='container'>
+    <div className='bg-slate-800 h-full'>
       <InfiniteScroll
       dataLength= {movies.length}
       hasMore={hasMore}
       next={()=>setPage((prevPage) =>prevPage+1)}
-      loader={<Spinner/>}
-      endMessage = {<p>Ya los has visto todos!!!</p>}>
+      loader={<div className='h-screen'><Spinner  /></div>}
+      endMessage = {<p className='text-white text-center text-2xl p-10'>Ya los has visto todos!!!</p>}>
       
-      <ul>
+      <ul className='grid md:grid-cols-4 text-white p-50 gap-2.5 pt-10 '>
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}

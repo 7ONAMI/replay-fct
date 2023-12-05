@@ -3,7 +3,7 @@ import {get} from "../../utils/httpGet";
 import MovieCard from '../MovieCard';
 
 // eslint-disable-next-line react/prop-types
-export const ListItems = ({title, top}) => {
+export const ListItems = ({top}) => {
     
     
     // tipo de audiovisual ( pelicula o serie)
@@ -38,13 +38,13 @@ export const ListItems = ({title, top}) => {
     }, [isMovie, top])
     
     return (
-        <div className='bg-slate-600'>
-            <div className='w-full '>
-                {title && <h3 className='text-white bg-gradient-to-br from-purple-600 to-blue-500  font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>{title}</h3>}
-                { isMovie ?<button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200  focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 ' disabled>Pelicula</button>:<button className='text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' onClick={handleIsMovie}>Pelicula</button>}
-                { !isMovie ?<button className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200  focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 ' disabled>Serie</button>:<button className='text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' onClick={handleIsMovie}>Serie</button>}
+        <div className='bg-slate-800 pt-10'>
+            <div className='w-full px-5'>
+               
+                { isMovie ?<button className='py-2.5 px-5 me-2 mb-2 text-sm  text-gray-200  bg-gray-700 rounded-full border border-color-white font-bold  ' disabled>Peliculas</button>:<button className='text-white bg-red-400 hover:bg-white hover:text-red-400 font-bold  rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 border-2 border-white  hover:border-red-400' onClick={handleIsMovie}>Peliculas</button>}
+                { !isMovie ?<button className='py-2.5 px-5 me-2 mb-2 text-sm  text-gray-200  bg-gray-700 rounded-full border border-color-white font-bold  ' disabled>Series</button>:<button className='text-white bg-red-400 hover:bg-white hover:text-red-400 font-bold  rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 border-2 border-white  hover:border-red-400' onClick={handleIsMovie}>Series</button>}
             </div>
-            <div className="px-2">
+            <div className="px-2 pt-6">
             <ul className="grid md:grid-cols-4 text-white p-50 gap-2.5">
                 {movies.map((movie) =>(
                     <MovieCard key={movie.id} movie={movie} isMovie={isMovie}/>
