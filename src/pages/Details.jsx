@@ -6,6 +6,7 @@ import { get } from "../utils/httpGet";
 import { useEffect, useState } from "react";
 import { Spinner } from "../components/Spinner";
 import { Link } from "react-router-dom";
+import { IoMdMenu } from "react-icons/io";
 export const Details = () => {
     const {movieId, type} = useParams();
     const [movie, setMovie] = useState(null);
@@ -31,7 +32,12 @@ export const Details = () => {
       setDirector(dirName);     
     }, [movieCredits])
     
-   
+   // abrir y cerrar menu en pantalla pequeña
+   const [menuClicked, setMenuClicked] = useState(true);
+
+   const handleClickMenu = () =>{
+     setMenuClicked(prevState=>!prevState);
+   }
 
     if(!movie){
         return (
@@ -44,43 +50,87 @@ export const Details = () => {
     const imagenUrlOriginal= "http://image.tmdb.org/t/p/w300"
     
   if (type =="movie") { return (
-    <div className="bg-slate-800 h-screen">
-    <div className=" text-white sm:flex  justify-center pt-10 px-16">
-        <div><img className="rounded-xl max-w-sm w-4/5 h-auto " src={imagenUrl} alt={movie.title} /></div>
-        <div className="max-w-md w-4/5">
-            <div className="text-3xl">{movie.title}</div>
-            <div className="text-xs flex space-x-5 pt-2.5 items-center" >
-                <div className="movie-date"><span className="text-sky-400 font-bold ">Estreno </span>{movie.release_date} </div>
-                <div className="flex items-center movie-vote "><LiaImdb className="m-1" title="icono imdb" size={25}  color="#38bdf8"/> {Math.round(movie.vote_average*10)/10} </div>
-                <div className="movie-runtime"><span className="text-sky-400 font-bold ">Duración </span>{Math.floor(movie.runtime/ 60)}h {movie.runtime % 60}m</div>
+    
+    <div className="bg-slate-800 ">
+        <header className=' bg-slate-900 flex sm:flex-row flex-col h-full sm:items-center sm:place-content-between sm:max-h-22 text-white'>
+                    {/* imagen de logo */}
+            <div className='flex items-center place-content-between w-full'>
+                <Link to={"/"}>
+                    <div className='flex items-center pl-5  sm:pl-12 py-4  gap-3 text-[#FE99A0] '>
+                    <img className='max-h-16 pr-3' src="/images/replay.png" alt="logo" />
+                    <span className="border border-light-gray h-12 hidden md:flex"></span>
+                    <h2 className='replay sm:pl-3 text-2xl'><span className='text-[#98BCE5]'>RE</span>PLAY</h2>
+                    </div> 
+                </Link>
+                <IoMdMenu size={50} className={`${menuClicked ? '' : 'hidden'} cursor-pointer mr-5 sm:hidden`} onClick={handleClickMenu}/>
             </div>
-            
-            <div className="text-sm pt-2.5 ">
-                { movie 
-                ? <span><span className="text-sky-400 font-bold">Generos </span>{movie.genres.map(genre=>genre.name).join(", ")}</span> 
-                : null}
-            </div>
-            <div className="text-xl pt-3 text-sky-400">{movie ? movie.tagline : null}</div>
-            <div className=" pt-2.5">{movie ? movie.overview : null}</div> 
-            <div className="pt-6 text-sm">
-                <span className="text-sky-400 font-bold">Director </span>
-                <span className="director-name">{director}</span>
-            </div>
-            <div className="pt-2.5 text-sm">
-                <span className="text-sky-400 font-bold">Main Cast </span>
-               {movieCredits ? ( movieCredits.cast.map((cast, i) => (i < 11) ? 
-                <span key={cast.cast_id}>
-                {i !== 10 ? `${cast.name}, ` : 
-                `${cast.name}`}
-                </span> : null) ): null}  
-            </div>
+                  
+            <nav className={`${menuClicked ? 'hidden' : '' } list-none sm:flex gap-3 flex flex-col items-center sm:flex-row text-[18px] sm:w-full sm:pr-5 sm:justify-end  sm:items-center`}>
+              <li className={`${menuClicked ? 'hidden' : ''} cursor-pointer sm:hidden  flex place-content-end`}><IoMdMenu size={50} color='#98BCE5' onClick={handleClickMenu}/></li>
+              <li><Link to={"/"} state={{some: "popular"}}><span className="hover:text-[#98BCE5]">Populares</span></Link></li>
+              <li><Link to={"/"} state={{some: "top_rated"}}><span className="hover:text-[#98BCE5]">Mejor Valoradas</span></Link></li>
+              <li></li><Link to={{pathname:"/", state:{some:"upcoming"}}}><span className="hover:text-[#98BCE5]">Estrenos</span></Link>
+            </nav>
+
+        </header>
+    <div className=" text-white flex flex-col sm:flex-row justify-center sm:h-screen pt-10 sm:px-16 pb-10">
+        <div className="flex  justify-center  max-h-96"><img className="rounded-xl max-w-sm   h-auto " src={imagenUrl} alt={movie.title} /></div>
+            <div className="flex justify-center text-center sm:text-left">
+                <div className="max-w-md w-4/5" >
+                    <div className="text-3xl">{movie.title}</div>
+                    <div className="text-xs flex space-x-5 pt-2.5 justify-center items-center" >
+                        <div className="movie-date"><span className="text-sky-400 font-bold ">Estreno </span>{movie.release_date} </div>
+                        <div className="flex items-center movie-vote "><LiaImdb className="m-1" title="icono imdb" size={25}  color="#38bdf8"/> {Math.round(movie.vote_average*10)/10} </div>
+                        <div className="movie-runtime"><span className="text-sky-400 font-bold ">Duración </span>{Math.floor(movie.runtime/ 60)}h {movie.runtime % 60}m</div>
+                    </div>
+                    
+                    <div className="text-sm pt-2.5 ">
+                        { movie 
+                        ? <span><span className="text-sky-400 font-bold">Generos </span>{movie.genres.map(genre=>genre.name).join(", ")}</span> 
+                        : null}
+                    </div>
+                    <div className="text-xl pt-3 text-sky-400">{movie ? movie.tagline : null}</div>
+                    <div className=" pt-2.5">{movie ? movie.overview : null}</div> 
+                    <div className="pt-6 text-sm">
+                        <span className="text-sky-400 font-bold">Director </span>
+                        <span className="director-name">{director}</span>
+                    </div>
+                    <div className="pt-2.5 text-sm">
+                        <span className="text-sky-400 font-bold">Main Cast </span>
+                        {movieCredits ? ( movieCredits.cast.map((cast, i) => (i < 11) ? 
+                        <span key={cast.cast_id}>
+                        {i !== 10 ? `${cast.name}, ` : 
+                        `${cast.name}`}
+                        </span> : null) ): null}  
+                    </div>
+            </div>  
         </div>
+        
     </div>
-    <div className="flex p-8  justify-center "><Link className="bg-red-400 p-3 rounded text-white font-bold hover:text-red-400 hover:bg-white" to={"/"}>Volver</Link></div>
     </div>
   ) } else{ return (
     <>
-    <div className="bg-slate-800 h-screen">
+    <div className="bg-slate-800">
+        <header className=' bg-slate-900 flex sm:flex-row flex-col h-full sm:items-center sm:place-content-between sm:max-h-22 text-white'>
+                    {/* imagen de logo */}
+            <div className='flex items-center place-content-between w-full'>
+                <Link to={"/"}>
+                    <div className='flex items-center pl-5  sm:pl-12 py-4  gap-3 text-[#FE99A0] '>
+                    <img className='max-h-16 pr-3' src="/images/replay.png" alt="logo" />
+                    <span className="border border-light-gray h-12 hidden md:flex"></span>
+                    <h2 className='replay sm:pl-3 text-2xl'><span className='text-[#98BCE5]'>RE</span>PLAY</h2>
+                    </div> 
+                </Link>
+                <IoMdMenu size={50} className={`${menuClicked ? '' : 'hidden'} cursor-pointer mr-5 sm:hidden`} onClick={handleClickMenu}/>
+            </div>
+                  
+            <nav className={`${menuClicked ? 'hidden' : '' } list-none  gap-3 flex flex-col items-center sm:flex-row text-[18px] sm:w-full sm:pr-5 sm:justify-end  sm:items-center`}>
+              <li className={`${menuClicked ? 'hidden' : ''} cursor-pointer sm:hidden  flex place-content-end`}><IoMdMenu size={50} color='#98BCE5' onClick={handleClickMenu}/></li>
+              <Link to={"/"} state={{some: "popular"}}><span className="hover:text-[#98BCE5]">Populares</span></Link>
+              <Link to={"/"} state={{some: "top_rated"}}><span className="hover:text-[#98BCE5]">Mejor Valoradas</span></Link>
+              <Link to={{pathname:"/", state:{some:"upcoming"}}}><span className="hover:text-[#98BCE5]">Estrenos</span></Link>
+            </nav>
+        </header>
         <div className=" text-white sm:flex  justify-center pt-10 px-16">
             <div ><img className="rounded-xl max-w-sm w-4/5 h-auto " src={imagenUrl} alt={movie.title} /></div>
             <div className="max-w-md w-4/5">
