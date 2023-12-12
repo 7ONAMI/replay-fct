@@ -132,9 +132,10 @@ export const Details = () => {
             </nav>
 
         </header>
-        <div className=" text-white sm:flex  justify-center pt-10 px-16">
-            <div ><img className="rounded-xl max-w-sm w-4/5 h-auto " src={imagenUrl} alt={movie.title} /></div>
-            <div className="max-w-md w-4/5">
+        <div className=" text-white flex flex-col sm:flex-row justify-center sm:h-screen pt-10 sm:px-16 pb-10">
+            <div className="flex  justify-center  max-h-96"><img className="rounded-xl max-w-sm   h-auto  " src={imagenUrl} alt={movie.title} /></div>
+            <div className="flex justify-center text-center sm:text-left">
+                <div className="max-w-md w-4/5">
                 <div className="text-3xl">{movie.name}</div>
                 <div className="text-xs flex space-x-5 pt-2.5 items-center">
                     <div className="movie-seasons"><span className="text-sky-400 font-bold">Temporadas </span> {movie.number_of_seasons}  </div>
@@ -155,9 +156,11 @@ export const Details = () => {
                 <div className="pt-2.5"><span className="text-sky-400 font-bold">Creador</span> {movie.created_by=="" ? <span>Desconocido</span> :movie.created_by.map(creator=> creator.name).join(", ")  }</div>
             </div>
 
+            </div>
+                
+
         </div>
-        <div className="flex p-8  justify-center "><Link className=" p-3 rounded text-white font-bold bg-red-400 hover:text-red-400 hover:bg-white" to={"/"}>Volver</Link></div>
-    </div>
+         </div>
     </>
   )}
 }
