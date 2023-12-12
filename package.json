@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://6577c3de9e5338737e37c634--replay007.netlify.app/",
+  "homepage": "https://replay-fct.000webhostapp.com/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
