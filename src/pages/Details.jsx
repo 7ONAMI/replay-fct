@@ -65,11 +65,13 @@ export const Details = () => {
                 <IoMdMenu size={50} className={`${menuClicked ? '' : 'hidden'} cursor-pointer mr-5 sm:hidden`} onClick={handleClickMenu}/>
             </div>
                   
-            <nav className={`${menuClicked ? 'hidden' : '' } list-none sm:flex gap-3 flex flex-col items-center sm:flex-row text-[18px] sm:w-full sm:pr-5 sm:justify-end  sm:items-center`}>
-              <li className={`${menuClicked ? 'hidden' : ''} cursor-pointer sm:hidden  flex place-content-end`}><IoMdMenu size={50} color='#98BCE5' onClick={handleClickMenu}/></li>
-              <li><Link to={"/"} state={{some: "popular"}}><span className="hover:text-[#98BCE5]">Populares</span></Link></li>
-              <li><Link to={"/"} state={{some: "top_rated"}}><span className="hover:text-[#98BCE5]">Mejor Valoradas</span></Link></li>
-              <li></li><Link to={{pathname:"/", state:{some:"upcoming"}}}><span className="hover:text-[#98BCE5]">Estrenos</span></Link>
+            <nav className={`${menuClicked ? 'hidden' : '' }  sm:flex  flex flex-col items-center sm:flex-row text-[18px] sm:w-full `}>
+                <ul className="list-none sm:flex gap-3 flex flex-col items-center sm:flex-row text-[18px] sm:w-full sm:pr-4 sm:justify-end  sm:items-center" >
+                    <li className={`${menuClicked ? 'hidden' : ''} cursor-pointer sm:hidden  flex place-content-end`}><IoMdMenu size={50} color='#98BCE5' onClick={handleClickMenu}/></li>
+                    <li><Link to={"/"} state={{some: "popular"}}><span className="hover:text-[#98BCE5]">Populares</span></Link></li>
+                    <li><Link to={"/"} state={{some: "top_rated"}}><span className="hover:text-[#98BCE5]">Mejor Valoradas</span></Link></li>
+                    <li><Link to={{pathname:"/", state:{some:"upcoming"}}}><span className="hover:text-[#98BCE5]">Estrenos</span></Link></li>
+                </ul>
             </nav>
 
         </header>
@@ -124,11 +126,13 @@ export const Details = () => {
                 <IoMdMenu size={50} className={`${menuClicked ? '' : 'hidden'} cursor-pointer mr-5 sm:hidden`} onClick={handleClickMenu}/>
             </div>
                   
-            <nav className={`${menuClicked ? 'hidden' : '' } list-none sm:flex gap-3 flex flex-col items-center sm:flex-row text-[18px] sm:w-full sm:pr-5 sm:justify-end  sm:items-center`}>
-              <li className={`${menuClicked ? 'hidden' : ''} cursor-pointer sm:hidden  flex place-content-end`}><IoMdMenu size={50} color='#98BCE5' onClick={handleClickMenu}/></li>
-              <li><Link to={"/"} state={{some: "popular"}}><span className="hover:text-[#98BCE5]">Populares</span></Link></li>
-              <li><Link to={"/"} state={{some: "top_rated"}}><span className="hover:text-[#98BCE5]">Mejor Valoradas</span></Link></li>
-              <li></li><Link to={{pathname:"/", state:{some:"upcoming"}}}><span className="hover:text-[#98BCE5]">Estrenos</span></Link>
+            <nav className={`${menuClicked ? 'hidden' : '' }  sm:flex  flex flex-col items-center sm:flex-row text-[18px] sm:w-full `}>
+                <ul className="list-none sm:flex gap-3 flex flex-col items-center sm:flex-row text-[18px] sm:w-full sm:pr-4 sm:justify-end  sm:items-center" >
+                    <li className={`${menuClicked ? 'hidden' : ''} cursor-pointer sm:hidden  flex place-content-end`}><IoMdMenu size={50} color='#98BCE5' onClick={handleClickMenu}/></li>
+                    <li><Link to={"/"} state={{some: "popular"}}><span className="hover:text-[#98BCE5]">Populares</span></Link></li>
+                    <li><Link to={"/"} state={{some: "top_rated"}}><span className="hover:text-[#98BCE5]">Mejor Valoradas</span></Link></li>
+                    <li><Link to={{pathname:"/", state:{some:"upcoming"}}}><span className="hover:text-[#98BCE5]">Estrenos</span></Link></li>
+                </ul>
             </nav>
 
         </header>

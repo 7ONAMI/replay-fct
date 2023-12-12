@@ -20,7 +20,8 @@ export function SearchBox()  {
         <h3 className=" font-bold w-full text-center text-xl shadow-sm">ENCUENTRA LA ESPERIENCIA AUDIOVISUAL IDEAL</h3>
             <div className="flex justify-center w-full">
                 <form className='flex justify-center w-full' onSubmit={handleSubmit}>
-                  <input 
+                  <label htmlFor="search"></label>
+                  <input name="search" id="search"
                     className=' text-gray-500 ps-10 rounded-lg bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 w-2/5'
                     type="text"
                     value={search ?? ""} 
@@ -29,7 +30,7 @@ export function SearchBox()  {
                       const value= e.target.value;
                       setQuery({search: value});
                     }}/>
-                  <button type="submit"><FaSearch  color="white"  className='pl-1'/></button>
+                  <button type="submit" name="submit"><FaSearch  color="white"  className='pl-1'/></button>
               </form>
             </div> 
 
