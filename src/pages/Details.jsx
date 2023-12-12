@@ -124,12 +124,13 @@ export const Details = () => {
                 <IoMdMenu size={50} className={`${menuClicked ? '' : 'hidden'} cursor-pointer mr-5 sm:hidden`} onClick={handleClickMenu}/>
             </div>
                   
-            <nav className={`${menuClicked ? 'hidden' : '' } list-none  gap-3 flex flex-col items-center sm:flex-row text-[18px] sm:w-full sm:pr-5 sm:justify-end  sm:items-center`}>
+            <nav className={`${menuClicked ? 'hidden' : '' } list-none sm:flex gap-3 flex flex-col items-center sm:flex-row text-[18px] sm:w-full sm:pr-5 sm:justify-end  sm:items-center`}>
               <li className={`${menuClicked ? 'hidden' : ''} cursor-pointer sm:hidden  flex place-content-end`}><IoMdMenu size={50} color='#98BCE5' onClick={handleClickMenu}/></li>
-              <Link to={"/"} state={{some: "popular"}}><span className="hover:text-[#98BCE5]">Populares</span></Link>
-              <Link to={"/"} state={{some: "top_rated"}}><span className="hover:text-[#98BCE5]">Mejor Valoradas</span></Link>
-              <Link to={{pathname:"/", state:{some:"upcoming"}}}><span className="hover:text-[#98BCE5]">Estrenos</span></Link>
+              <li><Link to={"/"} state={{some: "popular"}}><span className="hover:text-[#98BCE5]">Populares</span></Link></li>
+              <li><Link to={"/"} state={{some: "top_rated"}}><span className="hover:text-[#98BCE5]">Mejor Valoradas</span></Link></li>
+              <li></li><Link to={{pathname:"/", state:{some:"upcoming"}}}><span className="hover:text-[#98BCE5]">Estrenos</span></Link>
             </nav>
+
         </header>
         <div className=" text-white sm:flex  justify-center pt-10 px-16">
             <div ><img className="rounded-xl max-w-sm w-4/5 h-auto " src={imagenUrl} alt={movie.title} /></div>
