@@ -13,7 +13,7 @@ export const Home= () => {
   const search = query.get("search")
   const [top, setTop] = useState("popular");
   let {some} = useLocation();
-
+// efecto para pasar el tipo de top desde detalles
   useEffect(() => {
     
     if (some) {
@@ -27,9 +27,11 @@ export const Home= () => {
   
   // eslint-disable-next-line no-unused-vars
   const [modTop, setModTop] = useState(top);
+  // estados del estilo de cada boton del navBar
   const [stylePopular, setStylePopular]= useState("text-[#FE99A0]");
   const [styleRated, setStyleRated] = useState("text-white hover:text-[ #98BCE5]")
   const [styleUpcoming, setStyleUpcoming] = useState("text-white hover:text-[ #98BCE5]")
+  //funcion para cargar la lista de mas populares
   function handlePopular() {
     setTop("popular")
     setStylePopular( "text-[#FE99A0]")
@@ -39,6 +41,7 @@ export const Home= () => {
     setQuery(query)
     
   }
+  //funcion para cargar la lista de los mejor valorados
   function handleRated() {
     setTop("top_rated")
     setStylePopular("text-white hover:text-[#98BCE5]")
@@ -47,7 +50,7 @@ export const Home= () => {
     query.delete("search");
     setQuery(query)
   }
-    
+  //funcion para cargar la lista de los últimos estrenos  
   function handleUpcoming() {
     setTop("upcoming")
     setStylePopular("text-white hover:text-[#98BCE5]")
@@ -58,7 +61,7 @@ export const Home= () => {
   }
   
  
-  
+  // efecto que renderiza el componente cada vez que cambia el top
   useEffect(() => {
    
     setModTop(top)
@@ -66,7 +69,7 @@ export const Home= () => {
     
   }, [top])
   
-  
+   // funcion para que la busqueda sea automatica cada 300 ms
     const debouncedSearch = useDebounce(search, 300);
 
     // abrir y cerrar menu en pantalla pequeña
@@ -102,6 +105,7 @@ export const Home= () => {
             
         </header>
         <SearchBox />
+        {/* si se realiza una busqueda de mas de dos caracteres se carga el componente MovieGrid con el resultado */}
         {  search && search.length>2 ?
           <div>
           <MoviesGrid key={debouncedSearch} search={debouncedSearch} />
