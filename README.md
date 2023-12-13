@@ -25,4 +25,4 @@ Este comando compila el proyecto y lo guarda en una carpeta llamada dist
 
 Luego copiamos la carpeta en nuestro servidor y listo.
 
-
+https://replay-fct.000webhostapp.com/
