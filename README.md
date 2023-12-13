@@ -1,8 +1,28 @@
-# React + Vite
+# Replay
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+web para buscar información de películas y series
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Instalación: 
+
+En una terminal navega a la carpeta donde quieras clonar el repositorio y ejecuta:
+Git clone https://github.com/7ONAMI/replay-fct
+
+Luego Debes instalar las dependencias utilizando el comando:
+
+"npm install"
+
+Una vez instaladas las dependencias inicializa el proyecto con el comando:
+
+"npm run dev"
+
+
+Para instalar el proyecto en un servidor, primero debemos compilarlo. Para ello ejecutamos el comando:
+
+"npm run build"
+
+Este comando compila el proyecto y lo guarda en una carpeta llamada dist
+
+Luego copiamos la carpeta en nuestro servidor y listo.
+
+
